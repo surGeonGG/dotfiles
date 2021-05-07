@@ -35,7 +35,8 @@ set showcmd
 set number relativenumber
 set updatetime=300
 
-autocmd TextChanged,TextChangedI * silent write
+autocmd TextChanged * silent write
+autocmd InsertLeave * if &readonly==0 && filereadable(bufname('%')) | silent update | endif
 
 if has("win32")
    set directory=c:\\tmp,c:\\temp
