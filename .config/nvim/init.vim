@@ -1,9 +1,10 @@
 
+" Plug 'neoclide/coc.nvim'
+" Plug 'PyCQA/pylint'
+
 call plug#begin('~/.vim/plugged')
 
-Plug 'PyCQA/pylint'
 Plug 'numirias/semshi'
-Plug 'neoclide/coc.nvim'
 Plug 'tpope/vim-commentary'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
@@ -14,6 +15,7 @@ Plug 'tpope/vim-repeat'
 Plug 'cjrh/vim-conda'
 
 call plug#end()
+
 
 syntax on
 colorscheme industry
@@ -35,7 +37,7 @@ set showcmd
 set number relativenumber
 set updatetime=300
 
-autocmd TextChanged * silent write
+autocmd TextChanged * if &readonly==0 && filereadable(bufname('%')) | silent update | endif
 autocmd InsertLeave * if &readonly==0 && filereadable(bufname('%')) | silent update | endif
 
 if has("win32")
@@ -46,6 +48,21 @@ endif
 
 nnoremap <c-z> <nop>
 let mapleader = ","
+
+" Visual Mode Orange Background, Black Text
+hi Visual          guifg=#000000 guibg=#FD971F
+
+" Default Colors for CursorLine
+highlight CursorLine guibg=#3E3D32
+highlight Cursor guibg=#A6E22E;
+
+" Change Color when entering Insert Mode
+autocmd InsertEnter * highlight  CursorLine guibg=#323D3E
+autocmd InsertEnter * highlight  Cursor guibg=#00AAFF;
+
+" Revert Color to default when leaving Insert Mode
+autocmd InsertLeave * highlight  CursorLine guibg=#3E3D32
+autocmd InsertLeave * highlight  Cursor guibg=#A6E22E;
 
 " Cursor
 " :highlight MatchParen ctermfg=black ctermbg=white cterm=NONE
