@@ -37,7 +37,8 @@ PS1='${debian_chroot:+($debian_chroot)}\[\033[01;34m\]\u@\h:\w\[\033[00m\]\$  '
 
 export PATH=$PATH:/opt/programs/
 export PATH=$PATH:/opt/programs/bash_scripts/
-BROWSER=brave
+export PATH=$PATH:/usr/local/go/bin
+BROWSER=chromium
 
 
 stty -ixon # disable ctrl-s and ctrl-quote
@@ -69,4 +70,15 @@ kjvr
 . /home/jim/anaconda3/etc/profile.d/conda.sh
 
 export EDITOR=nvim
+
+
+# Show running command in terminal window title
+case "$TERM" in
+xterm*|rxvt*)
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)} \w\a\]$PS1"
+    trap 'echo -ne "\e]0;$BASH_COMMAND\007"' DEBUG
+    ;;
+*)
+    ;;
+esac
 

@@ -1,0 +1,27 @@
+super + w
+	exo-open --launch WebBrowser %u
+super + f
+	exo-open --launch FileManager
+super + r
+	x-terminal-emulator -e ranger
+super + e
+	mousepad
+super + t
+	x-terminal-emulator	
+super + c
+	qalculate
+super + s
+	xfce4-settings-manager
+alt + F2
+	xfrun4
+alt + F1
+	xfce4-popup-applicationsmenu
+ctrl + Escape
+	xfce4-popup-whiskermenu
+super + v
+	x-terminal-emulator -e code
+super + u
+	dmenu_unicode
+super + i
+	gimp
+

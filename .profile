@@ -28,8 +28,10 @@ fi
 
 wal --vte -Rn >/dev/null
 setxkbmap -option "caps:swapescape"
-sxhkd &
+sxhkd -r ~/shxkd.log &
 setxkbmap no
 
 xinput set-prop "ELAN0501:00 04F3:3019 Touchpad" "libinput Tapping Enabled" 1
+
+export PATH=$PATH:/usr/local/go/bin
 
