@@ -6,7 +6,6 @@ syntax enable
 set tabstop=4
 set autoindent
 set softtabstop=4
-" set cursorline
 filetype plugin on
 filetype indent on
 set wildmenu
@@ -21,9 +20,9 @@ set foldmethod=indent
 set showcmd
 set number relativenumber
 set updatetime=300
-" set	termguicolors
+set cursorline
+hi CursorLine term=bold cterm=NONE ctermbg=240
 
-" colorscheme wal
 
 autocmd TextChanged * if &readonly==0 && filereadable(bufname('%')) | silent update | endif
 autocmd InsertLeave * if &readonly==0 && filereadable(bufname('%')) | silent update | endif
@@ -78,16 +77,29 @@ nnoremap <silent> zk O<Esc>
 
 
 " Create brackets/quotes and enter into
-autocmd FileType python,java,c,cpp inoremap øs []<Left>
-autocmd FileType python,java,c,cpp inoremap øb {}<Left>
-autocmd FileType python,java,c,cpp inoremap øp ()<Left>
-autocmd FileType python,java,c,cpp inoremap ø' ''<Left>
-autocmd FileType python,java,c,cpp inoremap ø" ""<Left>
+autocmd FileType python,java,c,cpp inoremap øs []<C-g>U<Left>
+autocmd FileType python,java,c,cpp inoremap øb {}<C-g>U<Left>
+autocmd FileType python,java,c,cpp inoremap øp ()<C-g>U<Left>
+autocmd FileType python,java,c,cpp inoremap ø' ''<C-g>U<Left>
+autocmd FileType python,java,c,cpp inoremap ø" ""<C-g>U<Left>
 
+" Function definition python
+autocmd FileType python inoremap øf def ():<C-g>U<Left><C-g>U<Left><C-g>U<Left>
 
+" In insert or command mode, move normally by using Ctrl
+inoremap <C-h> <Left>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-l> <Right>
 
-
-
-
+" Unmap arrow keys
+noremap <UP> <NOP>
+noremap <DOWN> <NOP>
+noremap <RIGHT> <NOP>
+noremap <LEFT> <NOP>
+inoremap <UP> <NOP>
+inoremap <DOWN> <NOP>
+inoremap <RIGHT> <NOP>
+inoremap <LEFT> <NOP>
 
 
