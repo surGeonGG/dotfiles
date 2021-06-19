@@ -77,14 +77,18 @@ nnoremap <silent> zk O<Esc>
 
 
 " Create brackets/quotes and enter into
-autocmd FileType python,java,c,cpp inoremap øs []<C-g>U<Left>
-autocmd FileType python,java,c,cpp inoremap øb {}<C-g>U<Left>
-autocmd FileType python,java,c,cpp inoremap øp ()<C-g>U<Left>
-autocmd FileType python,java,c,cpp inoremap ø' ''<C-g>U<Left>
-autocmd FileType python,java,c,cpp inoremap ø" ""<C-g>U<Left>
+autocmd FileType python,java,c,cpp inoremap øs []<++><C-o>4h
+autocmd FileType python,java,c,cpp inoremap øb {}<++><C-o>4h
+autocmd FileType python,java,c,cpp inoremap øp ()<++><C-o>4h
+autocmd FileType python,java,c,cpp inoremap ø' ''<++><C-o>4h
+autocmd FileType python,java,c,cpp inoremap ø" ""<++><C-o>4h
 
 " Function definition python
-autocmd FileType python inoremap øf def ():<C-g>U<Left><C-g>U<Left><C-g>U<Left>
+autocmd FileType python inoremap øf def (<++>):<CR><++><UP><C-o>4h
+
+" Jump to <++> and delete
+inoremap <SPACE><SPACE> <ESC>/<++><ENTER>"_c4l
+
 
 " In insert or command mode, move normally by using Ctrl
 inoremap <C-h> <Left>
