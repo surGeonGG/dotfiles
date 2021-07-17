@@ -50,11 +50,11 @@ alias v="nvim"
 alias mkd="mkdir -pv"
 alias yt="youtube-dl --add-metadata -ic"
 alias yta="youtube-dl --add-metadata -xic"
-alias bw="wal --vte -i ~/Pictures/wallpapers/"
+# alias bw="wal --vte -i ~/Pictures/wallpapers/"
 alias r="ranger"
 alias rss="newsboat"
 alias c="conda activate"
-alias btc="conda activate btc-tf && echo -ne '\033]0;Python env\007'"
+alias btc="conda activate btc-tf && cd ~/PycharmProjects/bfx-trading-bo4/ && echo -ne '\033]0;Python env\007'"
 
 
 # Adding color
@@ -63,7 +63,7 @@ alias grep="grep --color=auto"
 alias ccat="highlight --out-format=ansi"
 
 
-(cat ~/.cache/wal/sequences &)
+# (cat ~/.cache/wal/sequences &)
 
 
 kjvr

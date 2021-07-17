@@ -26,7 +26,7 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-wal --vte -Rn >/dev/null
+# wal --vte -Rn >/dev/null
 setxkbmap -option "caps:swapescape"
 sxhkd -r ~/shxkd.log &
 setxkbmap no

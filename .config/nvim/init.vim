@@ -21,9 +21,29 @@ set showcmd
 set number relativenumber
 set updatetime=300
 set cursorline
+set shiftwidth=4
+set expandtab
+set smarttab
+" set cindent
+set backspace=indent,eol,start
+
+set indentexpr=GetIndent()
+
+function GetIndent()
+   let lnum = prevnonblank(v:lnum - 1)
+   let ind = indent(lnum)
+   return ind
+endfunction
+
+
+
 hi CursorLine term=bold cterm=NONE ctermbg=240
 
+" Change Color when entering Insert Mode
+autocmd InsertEnter * hi CursorLine term=bold ctermbg=232
+autocmd InsertLeave * hi CursorLine term=bold ctermbg=240
 
+" Autosave
 autocmd TextChanged * if &readonly==0 && filereadable(bufname('%')) | silent update | endif
 autocmd InsertLeave * if &readonly==0 && filereadable(bufname('%')) | silent update | endif
 
@@ -77,18 +97,17 @@ nnoremap <silent> zk O<Esc>
 
 
 " Create brackets/quotes and enter into
-autocmd FileType python,java,c,cpp inoremap øs []<++><C-o>4h
-autocmd FileType python,java,c,cpp inoremap øb {}<++><C-o>4h
-autocmd FileType python,java,c,cpp inoremap øp ()<++><C-o>4h
-autocmd FileType python,java,c,cpp inoremap ø' ''<++><C-o>4h
-autocmd FileType python,java,c,cpp inoremap ø" ""<++><C-o>4h
+autocmd FileType python,java,c,cpp inoremap øs []<C-g>U<left>
+autocmd FileType python,java,c,cpp inoremap øb {}<C-g>U<left>
+autocmd FileType python,java,c,cpp inoremap øp ()<C-g>U<left>
+autocmd FileType python,java,c,cpp inoremap ø' ''<C-g>U<left>
+autocmd FileType python,java,c,cpp inoremap ø" ""<C-g>U<left>
 
 " Function definition python
 autocmd FileType python inoremap øf def (<++>):<CR><++><UP><C-o>4h
 
 " Jump to <++> and delete
-inoremap <SPACE><SPACE> <ESC>/<++><ENTER>"_c4l
-
+inoremap <C-SPACE> <ESC>/<++><ENTER>"_c4l
 
 " In insert or command mode, move normally by using Ctrl
 inoremap <C-h> <Left>
@@ -105,5 +124,16 @@ inoremap <UP> <NOP>
 inoremap <DOWN> <NOP>
 inoremap <RIGHT> <NOP>
 inoremap <LEFT> <NOP>
+
+" Run macro recorded to q
+:nnoremap <Space> @q
+
+
+
+
+
+
+
+
 
 
